@@ -2,11 +2,9 @@
 import Input from "@/components/Input.vue";
 import LoginFooter from "@/components/LoginFooter.vue";
 import LoginHeader from "@/components/LoginHeader.vue";
-import visibleSvg from "@/assets/svg/eyeVisible.svg";
+import visibleSvg from "../assets/svg/eyeVisible.svg";
 import hiddenSvg from "../assets/svg/eyeHidden.svg";
 import Button from "@/components/Button.vue";
-import { useDispatch } from "@reduxjs/vue-redux";
-import { loginUser } from "@/apis/auth";
 
 export default {
   components: {
@@ -25,20 +23,28 @@ export default {
       password: "",
     };
   },
+  computed: {
+    loading(): boolean {
+      return this.$store.state.auth.loading;
+    },
+    error(): string | null {
+      return this.$store.state.auth.error;
+    },
+  },
   methods: {
     togglePassword() {
       this.passwordVisible = !this.passwordVisible;
     },
-    handleLogin() {
-      const dispatch: any = useDispatch();
-      console.log(this.username, this.password);
-      dispatch(
-        loginUser({
-          username: this.username,
-          password: this.password,
-        }),
-      );
-    },
+    async handleLogin(): Promise<void> {
+    await this.$store.dispatch("auth/login", {
+      username: this.username,
+      password: this.password,
+    });
+
+    if (this.$store.getters["auth/isAuthenticated"]) {
+      this.$router.push("/home");
+    }
+  },
   },
 };
 </script>
