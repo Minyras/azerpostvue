@@ -1,7 +1,6 @@
 import type { Module } from "vuex";
 import axios from "axios";
 import type { AuthState } from "@/types/loginType";
-
 export interface RootState {
   auth: AuthState;
 }
@@ -17,19 +16,19 @@ export const auth: Module<AuthState, RootState> = {
   },
 
   mutations: {
-    SET_LOADING(state, payload: boolean) {
+    SET_LOADING(state: any, payload: boolean) {
       state.loading = payload;
     },
-    SET_USER(state, user: any) {
+    SET_USER(state: any, user: any) {
       state.user = user;
     },
-    SET_TOKEN(state, token: string) {
+    SET_TOKEN(state: any, token: string) {
       state.token = token;
     },
-    SET_ERROR(state, error: string | null) {
+    SET_ERROR(state: any, error: string | null) {
       state.error = error;
     },
-    LOGOUT(state) {
+    LOGOUT(state: any) {
       state.user = null;
       state.token = null;
     },
@@ -63,7 +62,7 @@ export const auth: Module<AuthState, RootState> = {
   },
 
   getters: {
-    isAuthenticated: (state): boolean => {
+    isAuthenticated: (state: any): boolean => {
       return !!state.token;
     },
   },
