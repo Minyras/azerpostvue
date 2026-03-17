@@ -36,15 +36,15 @@ export default {
       this.passwordVisible = !this.passwordVisible;
     },
     async handleLogin(): Promise<void> {
-    await this.$store.dispatch("auth/login", {
-      username: this.username,
-      password: this.password,
-    });
+      await this.$store.dispatch("auth/login", {
+        username: this.username,
+        password: this.password,
+      });
 
-    if (this.$store.getters["auth/isAuthenticated"]) {
-      this.$router.push("/home");
-    }
-  },
+      if (this.$store.getters["auth/isAuthenticated"]) {
+        this.$router.push("/home");
+      }
+    },
   },
 };
 </script>

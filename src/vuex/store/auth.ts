@@ -1,12 +1,6 @@
 import type { Module } from "vuex";
 import axios from "axios";
-
-export interface AuthState {
-  user: any | null;
-  token: string | null;
-  loading: boolean;
-  error: string | null;
-}
+import type { AuthState } from "@/types/loginType";
 
 export interface RootState {
   auth: AuthState;

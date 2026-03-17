@@ -1,4 +1,6 @@
-export default interface LoginPayload {
-  username: string;
-  password: string;
+export interface AuthState {
+  user: any | null;
+  token: string | null;
+  loading: boolean;
+  error: string | null;
 }

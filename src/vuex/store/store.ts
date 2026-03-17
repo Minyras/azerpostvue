@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
-import type { RootState } from "@reduxjs/toolkit/query";
-import { auth } from "./auth";
+
+import { auth, type RootState } from "./auth";
 export const store = createStore<RootState>({
   modules: {
     auth,
