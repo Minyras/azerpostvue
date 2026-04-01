@@ -1,22 +1,29 @@
 import { createRouter, createWebHistory } from "vue-router";
-import LoginView from "../views/LoginView.vue";
-import HomeView from "@/views/HomeView.vue";
 
 const routes = [
-  { path: "/", name: "Login", component: LoginView },
-  { path: "/home", name: "Home", component: HomeView },
+  {
+    path: "/",
+    component: () => import("../views/LoginView.vue"),
+    meta: { layout: "login" },
+  },
+  {
+    path: "/home",
+    component: () => import("@/views/HomeView.vue"),
+    meta: { layout: "default", requiresAuth: true },
+  },
 ];
 const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-// router.beforeEach((to, from, next) => {
-//   const token = localStorage.getItem("token");
+router.beforeEach((to) => {
+  const isAuthenticated = localStorage.getItem("token");
 
-//   if (to.meta.requiresAuth && !token) {
-//     next("/login");
-//   } else {
-//     next();
-//   }
-// });
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    return {
+      path: "/",
+    };
+  }
+});
+
 export default router;

@@ -16,6 +16,8 @@ export default {
 <style lang="scss">
 .mainLayout {
   display: flex;
+  padding: 12px;
+  overflow: hidden;
   height: 100vh;
 }
 </style>

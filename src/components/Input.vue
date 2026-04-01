@@ -5,17 +5,20 @@ export default {
     name: String,
     label: String,
   },
+  emits: ["change"],
 };
 </script>
 <template>
   <div className="input-group">
-    <input :type="type" :name="name" />
+    <input
+      :type="type"
+      :name="name"
+      @input="$emit('change', $event.target.value)"
+    />
     <label>{{ label }}</label>
   </div>
 </template>
 <style lang="scss">
-
-
 .input-group {
   position: relative;
   width: 100%;

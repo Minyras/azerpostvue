@@ -34,6 +34,7 @@ export default {
   methods: {
     togglePassword() {
       this.passwordVisible = !this.passwordVisible;
+      console.log(this.username, this.password);
     },
     async handleLogin(): Promise<void> {
       await this.$store.dispatch("auth/login", {
@@ -70,7 +71,7 @@ export default {
             type="text"
             name="username"
             label="İstifadəçi adı və ya e-mail"
-            v-model="username"
+            @change="(value) => (username = value)"
           />
 
           <div class="password">
@@ -78,7 +79,7 @@ export default {
               :type="passwordVisible ? 'text' : 'password'"
               name="password"
               label="Şifrə"
-              v-model="password"
+              @change="(value) => (password = value)"
             />
 
             <img
