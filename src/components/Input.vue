@@ -13,7 +13,7 @@ export default {
     <input
       :type="type"
       :name="name"
-      @input="$emit('change', $event.target.value)"
+      @input="$emit('change', ($event.target as HTMLInputElement)?.value)"
     />
     <label>{{ label }}</label>
   </div>
