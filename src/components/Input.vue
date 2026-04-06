@@ -6,15 +6,17 @@ export default {
     label: String,
   },
   emits: ["change"],
+  methods: {
+    handleInput(event: Event) {
+      const value = (event.target as HTMLInputElement)?.value;
+      this.$emit("change", value);
+    },
+  },
 };
 </script>
 <template>
   <div className="input-group">
-    <input
-      :type="type"
-      :name="name"
-      @input="$emit('change', ($event.target as HTMLInputElement)?.value)"
-    />
+    <input :type="type" :name="name" @input="handleInput" />
     <label>{{ label }}</label>
   </div>
 </template>
