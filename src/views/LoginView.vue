@@ -19,7 +19,7 @@ export default {
       visibleSvg,
       hiddenSvg,
       activeTab: "otp",
-      username: "",
+      email: "",
       password: "",
     };
   },
@@ -34,11 +34,11 @@ export default {
   methods: {
     togglePassword() {
       this.passwordVisible = !this.passwordVisible;
-      console.log(this.username, this.password);
+      console.log(this.email, this.password);
     },
     async handleLogin(): Promise<void> {
       await this.$store.dispatch("auth/login", {
-        username: this.username,
+        email: this.email,
         password: this.password,
       });
 
@@ -69,9 +69,9 @@ export default {
         <div class="login-input">
           <Input
             type="text"
-            name="username"
+            name="email"
             label="İstifadəçi adı və ya e-mail"
-            @change="(value) => (username = value)"
+            @change="(value) => (email = value)"
           />
 
           <div class="password">

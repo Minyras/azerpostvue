@@ -35,12 +35,12 @@ export const auth: Module<AuthState, RootState> = {
   },
 
   actions: {
-    async login({ commit }, payload: { username: string; password: string }) {
+    async login({ commit }, payload: { email: string; password: string }) {
       try {
         commit("SET_LOADING", true);
         commit("SET_ERROR", null);
 
-        const res = await axios.post("/api/login", payload);
+        const res = await axios.post("http://localhost:3000/login", payload);
 
         const { user, token } = res.data;
 
