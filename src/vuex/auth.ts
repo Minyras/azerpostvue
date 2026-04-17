@@ -1,9 +1,7 @@
 import type { Module } from "vuex";
 import axios from "axios";
 import type { AuthState } from "@/types/loginType";
-export interface RootState {
-  auth: AuthState;
-}
+import type { RootState } from "@/types/RootType";
 
 export const auth: Module<AuthState, RootState> = {
   namespaced: true,

@@ -11,6 +11,11 @@ const routes = [
     component: () => import("@/views/HomeView.vue"),
     meta: { layout: "default", requiresAuth: true },
   },
+  {
+    path: "/credit",
+    component: () => import("@/components/Credit.vue"),
+    meta: { layout: "default", requiresAuth: true },
+  },
 ];
 const router = createRouter({
   history: createWebHistory(),

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import logo from "../assets/image/logoWhite.png";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 const openSections = ref<string[]>([]);
 
 const toggleSection = (sectionName: string) => {
@@ -9,6 +12,9 @@ const toggleSection = (sectionName: string) => {
   } else {
     openSections.value.push(sectionName);
   }
+};
+const goTo = (path: string) => {
+  router.push(path);
 };
 </script>
 
@@ -33,16 +39,15 @@ const toggleSection = (sectionName: string) => {
             <li>Ölkəxarici köçürmələr</li>
           </ul>
         </li>
+        <li>Ödəniş sistemləri</li>
+        <li>Kartlar və hesablar</li>
+        <li @click="goTo('/credit')">Kreditlər</li>
+        <li>Əmanətlər</li>
+        <li>Əmək haqqı layihəsi</li>
+        <li>Valyuta mübadiləsi</li>
+        <li>Ani Ödəniş sistemi</li>
+        <li>Şablonlar</li>
       </ul>
-
-      <p>Ödəniş sistemləri</p>
-      <p>Kartlar və hesablar</p>
-      <p>Kreditlər</p>
-      <p>Əmanətlər</p>
-      <p>Əmək haqqı layihəsi</p>
-      <p>Valyuta mübadiləsi</p>
-      <p>Ani Ödəniş sistemi</p>
-      <p>Şablonlar</p>
     </nav>
   </div>
 </template>
