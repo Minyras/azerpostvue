@@ -1,7 +1,6 @@
 <script lang="ts">
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-
 import Layout from "./components/Layout.vue";
 import LoginLayout from "./components/LoginLayout.vue";
 import Credit from "./components/Credit.vue";

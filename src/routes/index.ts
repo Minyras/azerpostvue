@@ -1,19 +1,21 @@
 import { createRouter, createWebHistory } from "vue-router";
-
+import LoginView from "../views/LoginView.vue";
+import HomeView from "@/views/HomeView.vue";
+import Credit from "@/components/Credit.vue";
 const routes = [
   {
     path: "/",
-    component: () => import("../views/LoginView.vue"),
+    component: () => LoginView,
     meta: { layout: "login" },
   },
   {
     path: "/home",
-    component: () => import("@/views/HomeView.vue"),
+    component: () => HomeView,
     meta: { layout: "default", requiresAuth: true },
   },
   {
     path: "/credit",
-    component: () => import("@/components/Credit.vue"),
+    component: () => Credit,
     meta: { layout: "default", requiresAuth: true },
   },
 ];

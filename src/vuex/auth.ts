@@ -1,7 +1,7 @@
 import type { Module } from "vuex";
 import axios from "axios";
 import type { AuthState } from "@/types/loginType";
-import type { RootState } from "@/types/RootType";
+import type { RootState } from "../types/RootType";
 
 export const auth: Module<AuthState, RootState> = {
   namespaced: true,
