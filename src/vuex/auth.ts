@@ -2,6 +2,7 @@ import type { Module } from "vuex";
 import axios from "axios";
 import type { AuthState } from "@/types/loginType";
 import type { RootState } from "../types/RootType";
+import api from "@/services/api";
 
 export const auth: Module<AuthState, RootState> = {
   namespaced: true,
@@ -38,7 +39,7 @@ export const auth: Module<AuthState, RootState> = {
         commit("SET_LOADING", true);
         commit("SET_ERROR", null);
 
-        const res = await axios.post("http://localhost:3000/login", payload);
+        const res = await api.post("/login", payload);
 
         const { user, token } = res.data;
 

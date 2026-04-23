@@ -2,6 +2,7 @@ import type { Module } from "vuex";
 import axios from "axios";
 import type { CreditState } from "@/types/creditType";
 import type { RootState } from "@/types/RootType";
+import api from "@/services/api";
 
 export interface CreditModuleState {
   credits: CreditState[];
@@ -38,7 +39,7 @@ export const credit: Module<CreditModuleState, RootState> = {
         commit("SET_LOADING", true);
         commit("SET_ERROR", null);
 
-        const res = await axios.get("http://localhost:3000/credits", {
+        const res = await api.get("/credits", {
           headers: {
             Authorization: `Bearer ${rootState.auth.token}`,
           },
